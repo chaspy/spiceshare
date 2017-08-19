@@ -1,0 +1,12 @@
+- name: install mongoDB
+  pacman: name=mongodb state=latest
+  become: yes
+
+- name: enable mongoDB
+  systemd: name=mongodb enabled=yes state=started
+  become: yes
+
+- name: install python modules
+  pip: name=pymongo state=latest
+  become: yes
+

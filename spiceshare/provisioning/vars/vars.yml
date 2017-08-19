@@ -1,0 +1,9 @@
+account: "vagrant"
+shell: "/bin/zsh"
+home: "/home/{{ account }}"
+work_dir: "{{ home }}/local"
+src_dir: "/usr/local/src"
+branch: "master"
+dotfiles_dir: "{{ work_dir }}/dotfiles"
+python:
+  version: "3.6.2"

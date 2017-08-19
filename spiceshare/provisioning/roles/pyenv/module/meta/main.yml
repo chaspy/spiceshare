@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: pyenv/pyenv }
+  - { role: pyenv/python }

@@ -1,0 +1,30 @@
+---
+- name: prepare pacman update(1)
+  pacman: name=archlinux-keyring state=present
+  become: yes
+
+- name: prepare pacman update(2)
+  file: path=/etc/ssl/certs/ca-certificates.crt state=absent
+  become: yes
+
+- name: pacman update
+  pacman: update_cache=yes upgrade=yes
+  become: yes
+
+- name: disable iptables
+  service: name=iptables state=stopped enabled=no
+  become: yes
+
+- name: enable ja_JP.UTF8 for locale.gen
+  lineinfile: >-
+    dest='/etc/locale.gen'
+    state=present
+    backrefs=yes
+    regexp='#ja_JP.UTF-8 UTF-8'
+    line='ja_JP.UTF-8 UTF-8'
+  become: yes
+
+- name: enable ja_JP.UTF8
+  shell: >-
+    locale-gen
+  become: yes

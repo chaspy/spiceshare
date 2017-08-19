@@ -1,0 +1,7 @@
+- name: install tmux
+  pacman: name=tmux state=installed
+  become: yes
+
+- name: set tmux config file
+  shell: cp {{ dotfiles_dir }}/.tmux.conf {{ home }}/.tmux.conf
+
