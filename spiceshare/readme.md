@@ -9,6 +9,9 @@
     
 ## Usage
 
+    # Run rest server
+    cd spiceshare
+    python app.py
     # Show all items
     curl localhost:5555/curry/v1/recipes
     # Register item
