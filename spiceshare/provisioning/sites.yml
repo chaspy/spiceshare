@@ -1,0 +1,14 @@
+---
+- hosts: curry
+  vars_files:
+    - vars/vars.yml
+  user: vagrant
+  roles:
+    - common
+    - user
+    - dotfiles
+    - tmux
+    - pyenv/pyenv
+    - pyenv/python
+    - pyenv/module
+    - mongodb

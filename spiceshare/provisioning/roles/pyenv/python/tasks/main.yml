@@ -1,0 +1,13 @@
+- name: install tkinter
+  pacman: name={{ item }} state=latest
+  with_items: '{{ depends }}'
+  become: yes
+
+- name: install python
+  shell: >-
+    source ${HOME}/.zshenv ;
+    pyenv install {{python.version}} ;
+    pyenv rehash ;
+    pyenv global {{python.version}}
+    executable=/bin/bash
+
