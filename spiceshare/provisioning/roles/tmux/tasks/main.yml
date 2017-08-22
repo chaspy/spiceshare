@@ -1,7 +1,7 @@
 - name: install tmux
   pacman: name=tmux state=installed
   become: yes
-  when: "ansible_os_family != 'RedHat'"
+  when: "ansible_os_family == 'Archlinux'"
 
 - name: install epel-release
   yum: name=epel-release state=present

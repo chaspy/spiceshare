@@ -1,9 +1,9 @@
 - name: install mongoDB
   pacman: name=mongodb state=latest
   become: yes
-  when: "ansible_os_family != 'RedHat'"
+  when: "ansible_os_family == 'Archlinux'"
 
-- name: install mongoDB
+- name: yum install mongoDB
   yum: name=mongodb state=latest
   become: yes
   when: "ansible_os_family == 'RedHat'"
@@ -11,12 +11,12 @@
 - name: enable mongoDB
   systemd: name=mongodb enabled=yes state=started
   become: yes
-  when: "ansible_os_family != 'RedHat'"
+  when: "ansible_os_family == 'Archlinux'"
 
 - name: enable mongoDB
   service: name=mongodb enabled=yes state=started
   become: yes
-  when: "ansible_os_family != 'RedHat'"
+  when: "ansible_os_family == 'RedHat'"
 
 - name: install python modules
   pip: name=pymongo state=latest
