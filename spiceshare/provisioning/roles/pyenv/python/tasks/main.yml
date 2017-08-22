@@ -2,6 +2,13 @@
   pacman: name={{ item }} state=latest
   with_items: '{{ depends }}'
   become: yes
+  when: "ansible_os_family != 'RedHat'"
+
+- name: install dependencies for building python
+  yum: name={{ item }} state=latest
+  with_items: '{{ depends_redhat }}'
+  become: yes
+  when: "ansible_os_family == 'RedHat'"
 
 - name: install python
   shell: >-

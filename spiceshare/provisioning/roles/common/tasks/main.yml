@@ -2,14 +2,27 @@
 - name: prepare pacman update(1)
   pacman: name=archlinux-keyring state=present
   become: yes
+  when: "ansible_os_family != 'RedHat'"
 
 - name: prepare pacman update(2)
   file: path=/etc/ssl/certs/ca-certificates.crt state=absent
   become: yes
+  when: "ansible_os_family != 'RedHat'"
 
 - name: pacman update
   pacman: update_cache=yes upgrade=yes
   become: yes
+  when: "ansible_os_family != 'RedHat'"
+
+- name: yum update
+  yum: name=* state=latest
+  become: yes
+  when: "ansible_os_family == 'RedHat'"
+
+- name: yum install git
+  yum: name=git state=latest
+  become: yes
+  when: "ansible_os_family == 'RedHat'"
 
 - name: disable iptables
   service: name=iptables state=stopped enabled=no
@@ -23,8 +36,10 @@
     regexp='#ja_JP.UTF-8 UTF-8'
     line='ja_JP.UTF-8 UTF-8'
   become: yes
+  when: "ansible_os_family != 'RedHat'"
 
 - name: enable ja_JP.UTF8
   shell: >-
     locale-gen
   become: yes
+  when: "ansible_os_family != 'RedHat'"
