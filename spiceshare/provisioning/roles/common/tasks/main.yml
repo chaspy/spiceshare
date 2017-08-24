@@ -27,6 +27,12 @@
 - name: disable iptables
   service: name=iptables state=stopped enabled=no
   become: yes
+  when: "ansible_os_family == 'Archlinux'"
+
+- name: disable firewalld
+  systemd: name=firewalld state=stopped enabled=no
+  become: yes
+  when: "ansible_os_family == 'RedHat'"
 
 - name: enable ja_JP.UTF8 for locale.gen
   lineinfile: >-
