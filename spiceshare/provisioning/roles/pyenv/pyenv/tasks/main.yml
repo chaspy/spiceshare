@@ -1,5 +1,5 @@
-- name: install pyenv
-  git: repo=git://github.com/yyuu/pyenv.git dest={{ home }}/.pyenv version=master accept_hostkey=yes
+- name: git clone pyenv
+  git: repo=git://github.com/yyuu/pyenv.git dest={{home}}/.pyenv version=master accept_hostkey=yes
 
 - name: install pyenv
   shell: >-

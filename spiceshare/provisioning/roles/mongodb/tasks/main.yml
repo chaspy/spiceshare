@@ -1,6 +1,17 @@
 - name: install mongoDB
   pacman: name=mongodb state=latest
   become: yes
+  when: "ansible_os_family == 'Archlinux'"
+
+- name: copy mongodb repo
+  copy: src={{ mongo_repo_filename }} dest=/etc/yum.repos.d/{{ mongo_repo_filename }} owner=root group=root mode=0644
+  become: yes
+  when: "ansible_os_family == 'RedHat'"
+
+- name: yum install mongoDB
+  yum: name=mongodb-org state=latest
+  become: yes
+  when: "ansible_os_family == 'RedHat'"
 
 - name: enable mongoDB
   systemd: name=mongodb enabled=yes state=started

@@ -1,12 +1,16 @@
 # SpiceShare
 ## Installation
-1. Install vagrant. 
+0. Requirements -> Arch Linux or CentOS 7.2 or higher
+1. Install vagrant.
 2. Install ansible higher than 2.2.
 3. Edit hosts file (spiceshare/hosts) or ssh config file (~/.ssh/config)
+   (extra - for centos7). Edit ansible.cfg.
 4. Execute vagrant provision.
 
+    vagrant up
     vagrant provision
-    
+
+
 ## Usage
 
     # Run rest server
@@ -30,4 +34,4 @@
     curl localhost:5555/v1/recipes/{recipe_id}
     # Delete item
     curl -X DELETE localhost:5555/v1/recipes/{recipe_id}
-    
+
