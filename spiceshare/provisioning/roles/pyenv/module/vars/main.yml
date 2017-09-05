@@ -1,7 +1,0 @@
-pip_pkgs:
-  - bpython
-  - numpy
-  - Cython
-  - flask
-  - Flask-REST
-  - Flask-RESTful

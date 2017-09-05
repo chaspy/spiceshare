@@ -1,6 +1,0 @@
----
-
-- name: change default shell to zsh from bash
-  user: name={{ account }} shell={{ shell }}
-  become: yes
-

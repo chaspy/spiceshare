@@ -1,9 +1,0 @@
-- name: git clone pyenv
-  git: repo=git://github.com/yyuu/pyenv.git dest={{home}}/.pyenv version=master accept_hostkey=yes
-
-- name: install pyenv
-  shell: >-
-    echo "export PATH=\$PATH:\$HOME/.pyenv/bin:\$HOME/.pyenv/shims" >> ${HOME}/.zshenv &&
-    echo "eval \"\$(pyenv init -)\"" >> ${HOME}/.zshenv &&
-    source ${HOME}/.zshenv
-    executable=/bin/bash
