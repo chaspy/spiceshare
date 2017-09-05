@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from flask import request
 from flask_restful import Resource, reqparse
 
@@ -5,7 +8,7 @@ from . import recipe as rp
 
 rps = rp.Recipes()
 
-# とりあえず、型の指定はなし
+# type is not specified for now
 #recipes_resource_fields = {
 #    'recipe_id' : fields.Integer
 #}
