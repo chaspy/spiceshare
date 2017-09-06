@@ -1,6 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
+"""
+    spiceshare.app
+"""
 from flask import Flask
 from flask_restful import Resource, Api
 
