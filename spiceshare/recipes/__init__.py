@@ -1,14 +1,11 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from flask import request
 from flask_restful import Resource, reqparse
 
-from . import recipe as rp
+from . import recipe
 
-rps = rp.Recipes()
+rps = recipe.Recipes()
 
-# type is not specified for now
+# とりあえず、型の指定はなし
 #recipes_resource_fields = {
 #    'recipe_id' : fields.Integer
 #}
@@ -26,11 +23,11 @@ class RecipesResource(Resource):
 
     def post(self):
         args = self.parser.copy().parse_args()
-        recipe = rp.Recipe(title=args['title'])
-        recipe.abstract = args['abstract']
-        recipe.category = args['category']
-        recipe.stuffs = args['stuffs']
-        rps.add(recipe)
+        rcp = recipe.Recipe(title=args['title'])
+        rcp.abstract = args['abstract']
+        rcp.category = args['category']
+        rcp.stuffs = args['stuffs']
+        rps.add(rcp)
         return
 
 

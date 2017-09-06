@@ -1,6 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
+"""
+    spiceshare.recipes.recipe
+"""
 from pymongo import MongoClient
 from bson import objectid
 
