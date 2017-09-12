@@ -12,13 +12,13 @@ python app.py
 * Show all items
 
 ```
-curl localhost:5555/curry/v1/recipes
+curl localhost:5000/curry/v1/recipes
 ```
 
 * Register item
 
 ```
-curl -X POST -H "ContentType: application/json" -H "Accept: application/json" -d '
+curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '
         "title": "特製カレー",
         "abstract": "我が家の特製カレー",
         "category": "ドライカレー",
@@ -28,17 +28,17 @@ curl -X POST -H "ContentType: application/json" -H "Accept: application/json" -d
             "水": "200ml",
             "豚ひき肉": "200g"
         }
-    ' localhost:5555/curry/v1/recipes
+    ' localhost:5000/curry/v1/recipes
 ```
 
 * Show item details
 
 ```
-curl localhost:5555/v1/recipes/{recipe_id}
+curl localhost:5000/v1/recipes/{recipe_id}
 ```
 
 * Delete item
 
 ```
-curl -X DELETE localhost:5555/v1/recipes/{recipe_id}
+curl -X DELETE localhost:5000/v1/recipes/{recipe_id}
 ```
