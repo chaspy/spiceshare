@@ -7,7 +7,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          keys:
+            - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+            - deps2-{{ .Branch }}-{{ checksum "test_requirements.txt" }}
       - run:
           command: |
             python3 -m venv venv
@@ -16,6 +18,10 @@ jobs:
             pip install -r test_requirements.txt
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - save_cache:
+          key: deps2-{{ .Branch }}-{{ checksum "test_requirements.txt" }}
           paths:
             - "venv"
       - run:
