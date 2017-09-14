@@ -1,4 +1,6 @@
 # spiceshare
+[![CircleCI](https://circleci.com/gh/takeshe12/spiceshare.svg?style=svg&circle-token=f0b56b2de1339b4ff5c7e9e68bf888d6308745f6)](https://circleci.com/gh/takeshe12/spiceshare)
+
 platform for sharing recipi of spice-curry.
 
 ## Usage
