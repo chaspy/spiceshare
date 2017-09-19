@@ -14,8 +14,26 @@
 
 ## 技術選定
 ### 認証
-### 検索
-### 画像
-### 画面
+Flask-HTTPAuth
 
-### model
+### 検索
+Elastic Search
+
+### 画像
+* numpy
+* sikids
+* pil
+
+### グラフ
+* d3js
+
+### Database-client
+* sqlalchemy
+
+### Database-server
+* Postgres
+* MongoDB or Redis
+
+### markdown previewer
+?
+
