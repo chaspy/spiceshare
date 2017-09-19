@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.5
+      - image: mongo:3.4.4
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - deps-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "test_requirements.txt" }}
+      - run:
+          command: |
+            python3 -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt -r test_requirements.txt
+      - save_cache:
+          key: deps-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "test_requirements.txt" }}
+          paths:
+            - "venv"
+      - run:
+          command: |
+            source venv/bin/activate
+            pytest
