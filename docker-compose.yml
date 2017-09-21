@@ -1,0 +1,17 @@
+version: '2'
+services:
+  flask:
+    image: python:3.5.4-alpine
+    ports:
+     - "5000:5000"
+    volumes:
+     - .:/db
+    depends_on:
+     - mongo
+    links:
+    - mongo
+  mongo:
+    image: mongo:3.4.4
+    ports:
+      - "27017:27017"
+    command: mongod --port 27017
