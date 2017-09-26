@@ -1,5 +1,25 @@
-from flask import request
+from flask import Flask, jsonify, abort, make_response, request
 from flask_restful import Resource, reqparse
+from flask_httpauth import HTTPBasicAuth
+
+auth = HTTPBasicAuth()
+
+users = {
+    "john": "hello",
+    "susan": "bye"
+}
+
+@auth.get_password
+def get_pw(username):
+    if username in users:
+        return users.get(username)
+    return None
+
+@auth.error_handler
+def unauthorized():
+    # return 403 instead of 401 to prevent browsers from displaying the default
+    # auth dialog
+    return make_response(jsonify({'message': 'Unauthorized access'}), 403)
 
 from . import recipe
 
@@ -11,6 +31,8 @@ rps = recipe.Recipes()
 #}
 
 class RecipesResource(Resource):
+
+    decorators = [auth.login_required]
 
     parser = reqparse.RequestParser()
     parser.add_argument('title', type=str, required=True)
@@ -32,6 +54,8 @@ class RecipesResource(Resource):
 
 
 class RecipeResource(Resource):
+
+    decorators = [auth.login_required]
 
     def get(self, recipe_id):
         if recipe_id in rps.recipes:
