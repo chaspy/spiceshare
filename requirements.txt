@@ -1,4 +1,5 @@
 flask
 Flask-REST
 Flask-RESTful
+flask-httpauth
 pymongo

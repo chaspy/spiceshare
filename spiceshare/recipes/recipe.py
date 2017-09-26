@@ -3,9 +3,10 @@
 """
 from pymongo import MongoClient
 from bson import objectid
-
+from flask_restful import Resource
 
 class Recipe:
+
     __slots__  = ['__recipe_id', '__title', '__abstract', '__category', '__stuffs']
 
     @property
